@@ -1,13 +1,12 @@
 import { expect } from 'chai';
 import { Wallet, Contract, utils } from 'zksync-web3';
-import * as hre from 'hardhat';
 import { ethers } from 'ethers';
 import { Deployer } from '@matterlabs/hardhat-zksync-deploy';
 
 const RICH_WALLET_PK =
   '0x7726827caac94a7f9e1b160f7ea819f172f7b6f9d2a97f992c38edeab82d4110';
 
-async function deployGreeter(deployer: Deployer): Promise<Contract> {
+async function deployGreeter(deployer) {
   try {
     console.log('Deploying contract');
     const artifact = await deployer.loadArtifact('Greeter');
@@ -21,7 +20,7 @@ async function deployGreeter(deployer: Deployer): Promise<Contract> {
 }
 
 describe('Greeter', function () {
-  let deployer: Deployer;
+  let deployer;
 
   before('Fund the wallet', async () => {
     deployer = new Deployer(hre, new Wallet(RICH_WALLET_PK));
